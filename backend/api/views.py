@@ -15,6 +15,7 @@ from django.utils.decorators import method_decorator
 from rest_framework import status
 from users.serializers import *
 
+@method_decorator(csrf_exempt, name='dispatch')
 class ShowMe(APIView) :
     def get(self, request):
         user = UserProfile.objects.get(user = self.request.user)

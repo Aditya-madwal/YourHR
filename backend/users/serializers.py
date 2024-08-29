@@ -16,30 +16,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 
-# class UserRegistrationSerializer(serializers.ModelSerializer):
-#     password = serializers.CharField(style={'input_type':'password'}, write_only=True)
-#     username = serializers.CharField()
-#     class Meta:
-#         model = UserProfile
-#         fields=['email', 'name','resume', 'password', 'username']
-#         # extra_kwargs={
-#         # 'password':{'write_only':True}
-#         # }
-
-#     def validate(self, validated_data):
-#         password = validated_data.get('password')
-#         if len(password) < 8 :
-#             raise serializers.ValidationError("Password is too short")
-        
-#         return validated_data
-
-
-#     def create(self, validated_data):
-#         baseuser = User.objects.create_user(username=validated_data['username'], password=validated_data['password'])
-#         validated_data.pop('username', None)
-#         instance = self.Meta.model.objects.create(user = baseuser, **validated_data)
-#         return instance
-
 class RegisterSerializer(serializers.ModelSerializer):
     # Additional fields for user creation
     username = serializers.CharField(max_length=150, write_only=True)
