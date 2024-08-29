@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = 'django-insecure-gvxt(%tarj%w_i&03oxla!-@l*t9zim$@#11rmk4n$my7qyzo!'
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
