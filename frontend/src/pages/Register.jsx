@@ -48,7 +48,7 @@ const Register = () => {
           alert(error);
         } finally {
           setLoading(false);
-          console.log(formData);
+          // console.log(formData);
         }
       } else {
         alert("make sure passwords match and are long enough.");
