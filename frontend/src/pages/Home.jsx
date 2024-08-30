@@ -2,25 +2,17 @@ import React, { useEffect, useState, useContext } from "react";
 import { MyContext } from "../MyContext";
 import api from "../api";
 
-// import { Worker, Viewer } from "@react-pdf-viewer/core";
-// import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-// import "@react-pdf-viewer/core/lib/styles/index.css";
-// import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-// import PDF from "react-pdf-scroll";
-// import PDFViewer from "pdf-viewer-reactjs";
-
 function Home() {
-  const { me, setMe } = useContext(MyContext); // Context to store user data
-  const [error, setError] = useState(null); // Local state for error handling
+  const { me, setMe } = useContext(MyContext);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMyData = async () => {
       try {
         // Fetch user data from the API
-        const response = await api.get(`/api/showme`); // Make sure 'axios' is imported and used correctly here
-        setMe(response.data); // Update context with fetched data
+        const response = await api.get(`/api/showme`);
+        setMe(response.data);
       } catch (error) {
-        // Error handling based on the type of error
         if (error.response) {
           setError(
             `Error: ${error.response.status} - ${error.response.statusText}`
@@ -35,9 +27,6 @@ function Home() {
 
     fetchMyData();
   }, [setMe]);
-
-  const pdfURL = "http://127.0.0.1:8000" + me?.resume;
-  // const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   return (
     <div>
@@ -68,14 +57,6 @@ function Home() {
               </dl>
             </div>
           </span>
-          <div style={{ height: "600px" }}>
-            {/* <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.5.141/build/pdf.worker.min.js">
-              <Viewer
-                fileUrl={pdfURL}
-                plugins={[defaultLayoutPluginInstance]}
-              />
-            </Worker> */}
-          </div>
         </>
       )}
     </div>
