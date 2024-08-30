@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { MyContext } from "../MyContext";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Home() {
   const { me, setMe } = useContext(MyContext);
@@ -57,6 +59,17 @@ function Home() {
               </dl>
             </div>
           </span>
+          <button
+            onClick={() => {
+              localStorage.clear();
+            }}
+            className="flex w-full justify-center">
+            <Link
+              to="/login"
+              className="w-fit bg-red-300 text-red-800 p-2 rounded-lg">
+              Logout
+            </Link>
+          </button>
         </>
       )}
     </div>
