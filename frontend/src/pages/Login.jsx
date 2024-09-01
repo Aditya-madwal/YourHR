@@ -23,6 +23,7 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     setLoading(true);
     e.preventDefault();
 
@@ -38,13 +39,14 @@ const Login = () => {
       } catch (error) {
         if (error.status == "401") {
           alert("wrong credentials");
-        }
+        }else{alert("some error occured, please try again")}
       } finally {
         setLoading(false);
       }
     } else {
       alert("all fields must be filled");
     }
+    setLoading(false);
   };
 
   return (
@@ -111,11 +113,20 @@ const Login = () => {
             </Link>
           </p>
 
-          <button
-            type="submit"
-            className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
-            Log in
-          </button>
+                    {loading ? (
+            <button
+              type="submit"
+              className="inline-block rounded-lg bg-blue-200 px-5 py-3 text-sm font-medium text-white text-opacity-10">
+              In progress...
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
+              Log In
+            </button>
+          )}
+
         </div>
       </form>
     </div>
