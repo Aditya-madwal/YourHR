@@ -163,7 +163,7 @@ const Register = () => {
             <button
               type="submit"
               className="inline-block rounded-lg bg-blue-200 px-5 py-3 text-sm font-medium text-white text-opacity-10">
-              In progress...
+              In progress..
             </button>
           ) : (
             <button
