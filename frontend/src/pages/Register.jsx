@@ -45,10 +45,9 @@ const Register = () => {
             console.error("Error:", error);
           }
         } catch (error) {
-          alert(error);
+          alert("some error occured, please try again");
         } finally {
           setLoading(false);
-          // console.log(formData);
         }
       } else {
         alert("make sure passwords match and are long enough.");
@@ -56,6 +55,7 @@ const Register = () => {
     } else {
       alert("all fields must be filled.");
     }
+    setLoading(false);
   };
 
   return (
@@ -159,11 +159,19 @@ const Register = () => {
               Log in
             </Link>
           </p>
-          <button
-            type="submit"
-            className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
-            Register
-          </button>
+          {loading ? (
+            <button
+              type="submit"
+              className="inline-block rounded-lg bg-blue-200 px-5 py-3 text-sm font-medium text-white text-opacity-10">
+              In progress...
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
+              Register
+            </button>
+          )}
         </div>
       </form>
     </div>
